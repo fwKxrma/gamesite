@@ -74,11 +74,10 @@
     <div class="game-select">
       <label for="game">Game:</label>
       <select id="game">
-        <option value="retro-bowl">Retro Bowl</option>
-        <option value="2048">2048</option>
-        <option value="tetris">Tetris</option>
-        <option value="snake">Snake</option>
         <option value="flappy">Flappy Bird</option>
+        <option value="snake">Snake</option>
+        <option value="tetris">Tetris</option>
+        <option value="pong">Pong</option>
       </select>
     </div>
   </header>
@@ -88,31 +87,27 @@
       id="game-frame"
       src=""
       allowfullscreen="true"
-      webkitallowfullscreen="true"
-      mozallowfullscreen="true"
       scrolling="no"
     ></iframe>
   </main>
 
   <footer>
-    Retro-style HTML5 games loaded from external sources.
+    Games hosted on your GitHub Pages.
   </footer>
 
   <script>
     const GAME_URLS = {
-      "retro-bowl": "https://game316009.konggames.com/gamez/0031/6009/live/index.html",
-      "2048": "https://play2048.co/",
-      "tetris": "https://chvin.github.io/react-tetris/",
-      "snake": "https://playsnake.org/",
-      "flappy": "https://flappybird.io/"
+      "flappy": "https://fwKxrma.github.io/gamesite/games/flappy/",
+      "snake": "https://fwKxrma.github.io/gamesite/games/snake/",
+      "tetris": "https://fwKxrma.github.io/gamesite/games/tetris/",
+      "pong": "https://fwKxrma.github.io/gamesite/games/pong/"
     };
 
     const select = document.getElementById("game");
     const frame = document.getElementById("game-frame");
 
     function loadGame(key) {
-      const url = GAME_URLS[key];
-      frame.src = url || "about:blank";
+      frame.src = GAME_URLS[key] || "about:blank";
     }
 
     loadGame(select.value);
