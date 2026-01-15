@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Retro Games Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .game-select {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    select {
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #111;
+      color: #f5f5f5;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0.75rem;
+      box-sizing: border-box;
+    }
+
+    #game-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    footer {
+      padding: 0.5rem 1rem;
+      background: #181818;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Retro Games Hub</h1>
+    <div class="game-select">
+      <label for="game">Game:</label>
+      <select id="game">
+        <option value="flappy">Flappy Bird</option>
+        <option value="snake">Snake</option>
+        <option value="tetris">Tetris</option>
+        <option value="pong">Pong</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <iframe
+      id="game-frame"
+      src=""
+      allowfullscreen="true"
+      scrolling="no"
+    ></iframe>
+  </main>
+
+  <footer>
+    Games hosted on your GitHub Pages.
+  </footer>
+
+  <script>
+    const GAME_URLS = {
+      "flappy": "https://fwKxrma.github.io/gamesite/games/flappy/",
+      "snake": "https://fwKxrma.github.io/gamesite/games/snake/",
+      "tetris": "https://fwKxrma.github.io/gamesite/games/tetris/",
+      "pong": "https://fwKxrma.github.io/gamesite/games/pong/"
+    };
+
+    const select = document.getElementById("game");
+    const frame = document.getElementById("game-frame");
+
+    function loadGame(key) {
+      frame.src = GAME_URLS[key] || "about:blank";
+    }
+
+    loadGame(select.value);
+
+    select.addEventListener("change", () => {
+      loadGame(select.value);
+    });
+  </script>
+</body>
+</html>
